@@ -1,0 +1,28 @@
+{
+  "name": "smalllog",
+  "version": "0.1.1",
+  "description": "Small log system with level and colors",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "coffee -cbo lib src",
+    "dev": "coffee -cwbo lib src"
+  },
+  "author": "Gustavo Vargas <xgvargas@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.1.2"
+  },
+  "main": "./lib/smalllog.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:xgvargas/smalllog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xgvargas/smalllog/issues"
+  },
+  "homepage": "https://github.com/xgvargas/smalllog#smalllog",
+  "keywords": [
+    "log",
+    "logger"
+  ]
+}
