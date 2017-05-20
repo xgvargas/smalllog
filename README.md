@@ -1,6 +1,6 @@
 # smalllog
 
-Smalllog is a simple console logging system for nodejs using colors and logging level.
+Smalllog is a simple console logging system for nodejs using colors and logging levels.
 
 ## instalation
 
@@ -31,15 +31,15 @@ log = require('smalllog')('Worker')
 // initialize with non default
 log = require('smalllog')('Worker').options({default: 'log'})
 
-log.log('message content', 2, 'string', {obj: true});
-log.info('message content');
+log.log('message content');
+log.info('message content', 2, 'string', {obj: true});
 log.err('message content');
 log.error('message content');
 log.debug('message content');
 
 // if you call log directly it will default to the `option.default`
 // == log.info by default
-log('message content');
+log('this will default to `log` due to use of options above!');
 
 // if you create another logger with another name then it´ll use another color
 
@@ -48,7 +48,11 @@ log('message content');
 // colors are based on order of creation
 
 log2 = require('smalllog')('API');
+log3 = require('smalllog')('Database');
+log4 = require('smalllog')('HTTP');
 
 log2('API will be using another color!');
+log3('Database will be using another color!');
+log4('HTTP will be using another color!');
 
 ```
