@@ -10,7 +10,7 @@ npm i smalllog
 
 ## configuration
 
-The is a few parameter you can set:
+There is a few parameters you can set:
 
 name   | default | description
 ----------|:--------:|-----------------------------------------
@@ -20,6 +20,8 @@ level     | 5         | threshold point to show messages
 default | 'info'   | which message to show when you call directly
 
 ## usage
+
+![example](./example.png)
 
 ```javascript
 
