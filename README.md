@@ -5,7 +5,7 @@ Smalllog is a simple console logging system for nodejs using colors and logging 
 ## instalation
 
 ```bash
-npm i smalllog
+npm i -S smalllog
 ```
 
 ## configuration
@@ -43,8 +43,8 @@ log.none('I have no level')
 sub = 'substituition'
 log.log('I´m using %s with objects: %o', sub, {key: 'value'});
 log.info('message content', 2, 'string', {obj: true});
-val = 'of arguments'
 log.warn('an warning...');
+val = 'of arguments'
 log.l('message content', 'can', 'have', 'any number', val);
 log.log('but will substitute only on first argument');
 log.debug('so, I´ll fail', 'at using %s', 'substituition');
@@ -63,8 +63,10 @@ log(err);
 // colors are based on order of creation
 
 log2 = require('smalllog')('API');
-log3 = require('smalllog')('Database', {time:true});
+log3 = require('smalllog')('Database', {time: true}); // remember options are global...
 log4 = require('smalllog')('HTTP');
+
+// ... so all 3 entries bellow will have timestamps
 
 log2('will be using another color!');
 log3.w('will be using another color!');
