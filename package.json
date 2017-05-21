@@ -1,6 +1,6 @@
 {
   "name": "smalllog",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Small log system with level and colors",
   "scripts": {
     "prepublish": "npm run build",
