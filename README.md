@@ -10,36 +10,51 @@ npm i smalllog
 
 ## configuration
 
-There is a few parameters you can set:
+There is a few global parameters you can set:
 
 name   | default | description
 ----------|:--------:|-----------------------------------------
 colors    | true    | use color in console output
 time      | false   | show timestamp on output
 level     | 5         | threshold point to show messages
-default | 'info'   | which message to show when you call directly
+default | 'none'  | which message to show when you call directly
 
 ## usage
 
 ![example](./example.png)
 
-```javascript
+You can use levels:
 
+- 0 - `none`, `n` 
+- 1 - `log`, `l`
+- 2 - `info`, `i`
+- 3 - `warn`, `w`
+- 4 - `error`, `err`, `e`
+- 5 - `debug`, `d`
+
+```javascript
 // initialize with default parameters
 log = require('smalllog')('Worker')
 
-// initialize with non default
-log = require('smalllog')('Worker').options({default: 'log'})
+// initialize with non defaults
+log = require('smalllog')('AppName', {default: 'info'})
 
-log.log('message content');
+log.none('I have no level')
+sub = 'substituition'
+log.log('I´m using %s with objects: %o', sub, {key: 'value'});
 log.info('message content', 2, 'string', {obj: true});
-log.err('message content');
-log.error('message content');
-log.debug('message content');
+val = 'of arguments'
+log.warn('an warning...');
+log.l('message content', 'can', 'have', 'any number', val);
+log.log('but will substitute only on first argument');
+log.debug('so, I´ll fail', 'at using %s', 'substituition');
 
 // if you call log directly it will default to the `option.default`
-// == log.info by default
-log('this will default to `log` due to use of options above!');
+log('this will default to `info` due to use of options above!');
+
+// unless its argument are an Error instance, in this case it will use error level
+err = new Error('Oh crap!');
+log(err);
 
 // if you create another logger with another name then it´ll use another color
 
@@ -48,11 +63,11 @@ log('this will default to `log` due to use of options above!');
 // colors are based on order of creation
 
 log2 = require('smalllog')('API');
-log3 = require('smalllog')('Database');
+log3 = require('smalllog')('Database', {time:true});
 log4 = require('smalllog')('HTTP');
 
-log2('API will be using another color!');
-log3('Database will be using another color!');
-log4('HTTP will be using another color!');
+log2('will be using another color!');
+log3.w('will be using another color!');
+log4.d('will be using another color too!');
 
 ```
