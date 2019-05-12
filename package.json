@@ -5,7 +5,8 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "coffee -cbo lib src",
-    "dev": "coffee -cwbo lib src"
+    "dev": "coffee -cwbo lib src",
+    "test": "mocha --require coffee-script/register -R spec \"test/**/*.test.{js,coffee}\""
   },
   "author": "Gustavo Vargas <xgvargas@gmail.com>",
   "license": "MIT",
@@ -24,5 +25,10 @@
   "keywords": [
     "log",
     "logger"
-  ]
+  ],
+  "devDependencies": {
+    "coffee-script": "1",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
 }
